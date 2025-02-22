@@ -8,7 +8,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 )
-
     
 const banner = `
 --------------------------- Welcome To ------------------------------
