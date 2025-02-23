@@ -7,6 +7,8 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
+
+    "goatsync/api/routes"
 )
     
 const banner = `
@@ -25,15 +27,15 @@ func main () {
 
 	engine := gin.Default()
 	engine.GET("/is_etebase", isEtebase)
+
+	routes.SetupRoutes(engine)
 	
-    // Get port from environment variable or use default
 	port := os.Getenv("PORT")
 	if port == "" {
 		log.Printf("Using default port as dint find PORT in env")
 		port = "8080"
 	}
 
-	// Start the server
 	log.Printf("Server starting on port %s", port)
 	if err := engine.Run(":" + port); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
